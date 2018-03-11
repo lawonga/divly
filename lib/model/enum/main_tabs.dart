@@ -1,0 +1,3 @@
+enum MainTabs {
+  MY_PORTFOLIO, PERFORMANCE_CHART
+}
