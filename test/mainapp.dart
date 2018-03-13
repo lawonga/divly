@@ -10,13 +10,13 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   testWidgets('Navigation tab bar should be showing', (WidgetTester tester) async {
-    await tester.pumpWidget(new MyApp());
+    await tester.pumpWidget(new BaseApp());
     expect(find.text('My Portfolio'), findsOneWidget);
     expect(find.text('Performance Chart'), findsOneWidget);
   });
 
   testWidgets('Portfolio list should be showing', (WidgetTester tester) async {
-    await tester.pumpWidget(new MyApp());
+    await tester.pumpWidget(new BaseApp());
     expect(find.byType(CompanyList), findsOneWidget);
   });
 }

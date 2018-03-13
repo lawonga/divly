@@ -19,7 +19,6 @@ class _MyHomePageState extends State<HomeScreen> with SingleTickerProviderStateM
   int index = 0;
   TabController _tabController;
 
-
   @override
   void initState() {
     super.initState();
@@ -33,6 +32,7 @@ class _MyHomePageState extends State<HomeScreen> with SingleTickerProviderStateM
         appBar: _searchBar.build(context),
         body: new TabBarView(
             controller: _tabController,
+            physics: new NeverScrollableScrollPhysics(),
             children: <StatefulWidget>[new MyPortfolio(), new PerformanceChart()]
         )
     );
