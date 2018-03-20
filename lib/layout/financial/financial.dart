@@ -6,7 +6,7 @@ import 'package:divly/model/company.dart';
 import 'package:flutter/material.dart';
 
 class CompanyFinancial extends StatefulWidget {
-  final Company _company;
+  final CompanyDetails _company;
 
   CompanyFinancial(this._company);
 
@@ -15,7 +15,7 @@ class CompanyFinancial extends StatefulWidget {
 }
 
 class _CompanyFinancial extends State<CompanyFinancial> {
-  final Company _company;
+  final CompanyDetails _company;
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
   _CompanyFinancial(this._company);
@@ -53,7 +53,7 @@ class _CompanyFinancial extends State<CompanyFinancial> {
           ],
         ),
         new Container(
-          padding: const EdgeInsets.only(bottom: 13.0),
+          padding: const EdgeInsets.only(bottom: 15.0),
           child: new RaisedButton.icon(
             label: const Text('Portfolio'),
             icon: new Icon(Icons.add),

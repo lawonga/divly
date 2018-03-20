@@ -4,13 +4,14 @@ import 'package:flutter/material.dart';
 
 class Routes {
 
-  static MaterialPageRoute financialRoute(Company company) {
-    return new AnimatedPageRoute(builder: (context) {
+  static MaterialPageRoute financialRoute(CompanyDetails company) {
+    return new MaterialPageRoute(builder: (context) {
       return new CompanyFinancial(company);
     });
   }
 }
 
+/// Todo we figure this out later
 class AnimatedPageRoute extends MaterialPageRoute {
 
   AnimatedPageRoute({WidgetBuilder builder}) : super(builder: builder);

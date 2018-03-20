@@ -8,7 +8,7 @@ class CompanyWidgetListItem extends StatelessWidget {
 
   CompanyWidgetListItem({this.company});
 
-  final Company company;
+  final CompanyDetails company;
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +52,7 @@ class CompanyWidgetListItem extends StatelessWidget {
     );
   }
 
-  void _performClick(BuildContext context, Company company) {
+  void _performClick(BuildContext context, CompanyDetails company) {
     Navigator.of(context).push(Routes.financialRoute(company));
   }
 }

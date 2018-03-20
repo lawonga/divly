@@ -23,7 +23,11 @@ class _MyHomePageState extends State<HomeScreen> with SingleTickerProviderStateM
   void initState() {
     super.initState();
     _tabController = new TabController(length: 2, vsync: this);
-    _searchBar = new SearchBar(setState: setState, buildDefaultAppBar: buildAppBar);
+    _searchBar = new SearchBar(
+      setState: setState,
+      onSubmitted: _performSearch,
+      buildDefaultAppBar: buildAppBar
+    );
   }
 
   @override
@@ -36,6 +40,11 @@ class _MyHomePageState extends State<HomeScreen> with SingleTickerProviderStateM
             children: <StatefulWidget>[new MyPortfolio(), new PerformanceChart()]
         )
     );
+  }
+
+  /// Hit the network when we perform a search
+  void _performSearch(String value) {
+
   }
 
   AppBar buildAppBar(BuildContext context) {

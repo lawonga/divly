@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class FinancialChart extends StatefulWidget {
   FinancialChart(this._company);
 
-  final Company _company;
+  final CompanyDetails _company;
 
   @override
   State<StatefulWidget> createState() => new _FinancialChart(_company);
@@ -14,7 +14,7 @@ class _FinancialChart extends State<FinancialChart> {
 
   _FinancialChart(this._company);
 
-  final Company _company;
+  final CompanyDetails _company;
 
   @override
   Widget build(BuildContext context) {
