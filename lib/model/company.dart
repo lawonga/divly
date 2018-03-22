@@ -1,8 +1,8 @@
 class CompanyDetails {
   String companyTicker;
   String companyName;
-  double tickerPrice;
+  String tickerPrice;
 
-  CompanyDetails({this.companyName = "", this.tickerPrice, this.companyTicker = ""});
+  CompanyDetails({this.companyName = "Loading...", this.tickerPrice = "Loading...", this.companyTicker = "Loading..."});
 
 }

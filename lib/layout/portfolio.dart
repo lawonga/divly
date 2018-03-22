@@ -24,7 +24,16 @@ class _MyPortfolioState extends State<MyPortfolio> implements NetworkResultCallb
     super.initState();
     retriever = new CompanyDetailsRetriever(this, methodChannel);
     _initCompanyList();
-    _getCompanyList();
+
+    List<CompanyDetails> readState = PageStorage.of(context)?.readState(context, identifier: "COMPANY_LIST");
+
+    if (readState == null) {
+      _getCompanyList();
+    } else {
+      setState(() {
+        _companyList = readState;
+      });
+    }
   }
 
   void _initCompanyList() {
@@ -47,11 +56,7 @@ class _MyPortfolioState extends State<MyPortfolio> implements NetworkResultCallb
 
     return new Scaffold(
       body: new RefreshIndicator(
-        child: new Center(
-          child: new Container(
-            child: companyList
-          )
-        ),
+        child: companyList,
         onRefresh: _performRefresh
       )
     );
@@ -75,6 +80,7 @@ class _MyPortfolioState extends State<MyPortfolio> implements NetworkResultCallb
   @override
   void updateCompanyDetail(int position, CompanyDetails company) {
     companyList.updateCompany(position, company);
+    PageStorage.of(context).writeState(context, _companyList, identifier: "COMPANY_LIST");
   }
 
   @override

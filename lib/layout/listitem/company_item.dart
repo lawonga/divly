@@ -15,7 +15,6 @@ class CompanyWidgetListItem extends StatelessWidget {
     return new Padding(
       padding: const EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 0.0),
       child: new SizedBox(
-        height: 72.0,
         child: new Card(
           child: new InkWell(
             onTap: () => _performClick(context, company),
@@ -59,7 +58,7 @@ class CompanyWidgetListItem extends StatelessWidget {
 
 class CompanyItemContents extends StatelessWidget {
 
-  CompanyItemContents({this.text = "", this.fontSize = 10.0, EdgeInsets edgeInsets})
+  CompanyItemContents({this.text = "Loading", this.fontSize = 10.0, EdgeInsets edgeInsets})
     : _edgeInsets = edgeInsets != null ? edgeInsets : new EdgeInsets.all(0.0);
 
   final String text;

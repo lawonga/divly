@@ -30,7 +30,7 @@ class CompanyDetailsRetriever {
   CompanyDetails getTimeSeriesData(Map<String, String> data) {
     CompanyDetails company = new CompanyDetails();
     company.companyName = data["symbol"];
-    company.tickerPrice = double.parse(data["recent_close"]);
+    company.tickerPrice = double.parse(data["recent_close"]).toString();
 
     return company;
   }
