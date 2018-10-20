@@ -71,14 +71,14 @@ class _MyPortfolioState extends State<MyPortfolio> implements NetworkResultCallb
   }
 
   void _getCompanyList() {
-    retriever.getCompany(0, "AW-UN");
-    retriever.getCompany(1, "SJR-B");
-    retriever.getCompany(2, "ENF");
-    retriever.getCompany(3, "CJT");
+    retriever.getCompany("AW-UN", position: 0);
+    retriever.getCompany("SJR-B", position: 1);
+    retriever.getCompany("ENF", position: 2);
+    retriever.getCompany("CJT", position: 3);
   }
 
   @override
-  void updateCompanyDetail(int position, CompanyDetails company) {
+  void updateCompanyDetail(CompanyDetails company, {int position}) {
     companyList.updateCompany(position, company);
     PageStorage.of(context).writeState(context, _companyList, identifier: "COMPANY_LIST");
   }
