@@ -63,19 +63,21 @@ class MainActivity : FlutterActivity() {
         val gson = Gson()
         val gsonResult = gson.fromJson(result.component1(), TimeSeries.Data::class.java)
 
-        val metaData = gsonResult.metaData
-        val recent = TimeSeries(gsonResult).recent()
+        val metaData = gsonResult?.metaData
+        if (metaData != null) {
+            val recent = TimeSeries(gsonResult).recent()
 
-        dataMap["information"] = metaData.information
-        dataMap["lastRefreshed"] = metaData.lastRefreshed
-        dataMap["outputSize"] = metaData.outputSize
-        dataMap["symbol"] = metaData.symbol
-        dataMap["timeZone"] = metaData.timeZone
-        dataMap["recent_open"] = recent.open
-        dataMap["recent_close"] = recent.close
-        dataMap["recent_high"] = recent.high
-        dataMap["recent_low"] = recent.low
-        dataMap["recent_volume"] = recent.volume
+            dataMap["information"] = metaData.information
+            dataMap["lastRefreshed"] = metaData.lastRefreshed
+            dataMap["outputSize"] = metaData.outputSize
+            dataMap["symbol"] = metaData.symbol
+            dataMap["timeZone"] = metaData.timeZone
+            dataMap["recent_open"] = recent.open
+            dataMap["recent_close"] = recent.close
+            dataMap["recent_high"] = recent.high
+            dataMap["recent_low"] = recent.low
+            dataMap["recent_volume"] = recent.volume
+        }
 
         return dataMap
     }
