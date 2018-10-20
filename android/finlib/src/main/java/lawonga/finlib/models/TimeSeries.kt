@@ -43,15 +43,15 @@ class TimeSeries(private val resultObject: Data) {
      */
     data class Data(
         @SerializedName("Meta Data") var metaData: MetaData,
-        @SerializedName("Time Series (Daily)") private var timeSeriesDaily: JsonObject? ) : BaseDetails() {
+        @SerializedName("Time Series (Daily)") private var timeSeriesDaily: JsonObject ) : BaseDetails() {
         fun timeSeriesDaily(): Map<String, Day> {
             val map: HashMap<String, Day> = HashMap()
-            if (timeSeriesDaily == null || timeSeriesDaily!!.entrySet() == null) return map // This can happen if the server is spammed
+            if (timeSeriesDaily.entrySet() == null) return map // This can happen if the server is spammed
 
             val gsonBuilder = GsonBuilder()
             gsonBuilder.registerTypeAdapter(Day::class.java, DayDeserializer())
             val gson = gsonBuilder.create()
-            for ((date, dayObj) in timeSeriesDaily!!.entrySet()) {
+            for ((date, dayObj) in timeSeriesDaily.entrySet()) {
                 map[date] = gson.fromJson(dayObj, Day::class.java)
             }
 
