@@ -10,7 +10,7 @@ class CompanyDetailsRetriever {
 
   CompanyDetailsRetriever(this.resultCallback, this.methodChannel);
 
-  Future<Null> getCompany(int position, String ticker) async {
+  Future<Null> getCompany(String ticker, {int position}) async {
     CompanyDetails company;
 
     try {
@@ -24,15 +24,19 @@ class CompanyDetailsRetriever {
       company.companyName = e.toString();
     }
 
-    resultCallback.updateCompanyDetail(position, company);
+    resultCallback.updateCompanyDetail(company, position: position);
   }
 
   CompanyDetails getTimeSeriesData(Map<String, String> data) {
     CompanyDetails company = new CompanyDetails();
-    company.companyName = data["symbol"];
-    company.tickerPrice = double.parse(data["recent_close"]).toString();
+    if (data.length > 0) {
+      company.companyName = data["symbol"];
+      company.tickerPrice = double.parse(data["recent_close"]).toString();
+      company.setValid = false;
+    } else {
+      company.setValid = true;
+    }
 
     return company;
   }
-
 }
