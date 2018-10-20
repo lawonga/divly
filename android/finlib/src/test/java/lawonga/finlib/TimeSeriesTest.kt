@@ -21,7 +21,7 @@ class TimeSeriesTest {
         val resultObject = gson.fromJson(result.component1()?.content, TimeSeries.Data::class.java)
 
         assertEquals("OK", response.responseMessage)
-        assertNotEquals("", result.get().content)
+        assertNotSame("", result.get().content)
         assertNotNull(resultObject)
     }
 
@@ -47,7 +47,7 @@ class TimeSeriesTest {
         val resultObject = gson.fromJson(data, TimeSeries.Data::class.java)
         val resultTimeSeries = resultObject.timeSeriesDaily()
 
-        assertNotEquals(0, resultTimeSeries.size)
+        assertNotSame(0, resultTimeSeries.size)
 
         assertEquals("31.9800", resultTimeSeries["2018-02-14"]?.open)
         assertEquals("32.6000", resultTimeSeries["2018-02-20"]?.close)
